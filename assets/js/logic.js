@@ -1,6 +1,6 @@
 // variables to keep track of quiz state
 var currentQuestionIndex = 0;
-var time = questions.length * 15;
+var time = 60;
 var timerId;
 
 // variables to reference DOM elements
@@ -65,7 +65,7 @@ function questionClick() {
   // check if user guessed wrong
   if (this.value !== questions[currentQuestionIndex].answer) {
     // penalize time
-    time -= 15;
+    time -= 5;
 
     if (time < 0) {
       time = 0;
@@ -141,7 +141,7 @@ function saveHighscore() {
 
     // format new score object for current user
     var newScore = {
-      score: time,
+      score: time * 100,
       initials: initials
     };
 
