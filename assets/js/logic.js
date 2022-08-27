@@ -1,20 +1,19 @@
 // variables to keep track of quiz state
 var currentQuestion= 0;
-var time = questions.length * 15;
+var time = 60;
 var timerId;
 
 // variables to reference DOM elements
-var questions = document.getElementById("questions");
-var timerEl = document.getElementById("time");
+var questionsEl= document.getElementById("questions");
+var timerEl = document.getElementById("timer");
 var choicesEl = document.getElementById("choices");
 var submitBtn = document.getElementById("submit");
 var startBtn = document.getElementById("start");
 var initialsEl = document.getElementById("initials");
-var feedbackEl = document.getElementById("feedback");
 
 // sound effects
-var sfxRight = new Audio("assets/sfx/correct.wav");
-var sfxWrong = new Audio("assets/sfx/incorrect.wav");
+// var sfxRight = new Audio("assets/sfx/correct.wav");
+// var sfxWrong = new Audio("assets/sfx/incorrect.wav");
 
 function startQuiz() {
   // hide start screen
@@ -22,7 +21,7 @@ function startQuiz() {
   startScreen.setAttribute("class", "hide");
 
   // un-hide questions section
-  questions.removeAttribute("class");
+  questionsEl.removeAttribute("class");
 
   // start timer
   timerId = setInterval(clockTick, 1000);
@@ -38,8 +37,8 @@ function getQuestion() {
   var currentQuestion = questions[currentQuestion];
 
   // update title with current question
-  var title = document.getElementById("question-title");
-  title.textContent = currentQuestion.title;
+  var title = document.getElementById("question");
+  title.textContent = questions[currentQuestion].question;
 
   // clear out any old question choices
   choicesEl.innerHTML = "";

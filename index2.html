@@ -3,17 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Swift and Simple</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
+
   <body>
-    <div id="timer"></div>
+    <div id="timer">Time:<span id="clock">0</span></div>
 
-    <div id="question"></div>
+    <div class="wrapper">
+      <div id="start-screen" class="start">
+        <h1>Swift and Simple</h1>
+        <p>
+          Welcome to Swift and Simple! Is your memory as good as good as the tower you use?
+          You have 60 seconds to answer as many questions as possible!
+          Every wrong answer will deduct 5 SECONDS off your time! So guess wisely and keep it SWIFT AND SIMPLE!
+        </p>
+        <button id="start">ASSESS!</button>
+      </div>
+      
+      <div id="questions" class="hide">
+        <h2 class="question"></h2>
+        <div id="choices" class="choices"></div>
+      </div>
 
-    <ul id="option-list"></ul>
+      <div id="end-screen" class="hide">
+        <h2>Good Try!</h2>
+        <p>Total R.A.M: <span id="final-score"></span>GBs.</p>
+        <p>
+          Enter initials: <input type="text" id="initials" max="3" />
+          <button id="submit">Submit</button>
+        </p>
+      </div>
 
-    <div id="question-result"></div>
-
-    <script src="./script.js"></script>
+    
+      <script src="./assets/js/questions.js"></script>
+      <script src="./assets/js/logic.js"></script>
   </body>
 </html>
