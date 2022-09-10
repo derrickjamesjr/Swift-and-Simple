@@ -1,19 +1,15 @@
 // variables to keep track of quiz state
-var currentQuestion= 0;
+var currentQuestion  = 0;
 var time = 60;
 var timerId;
 
 // variables to reference DOM elements
-var questionsEl= document.getElementById("questions");
+var questionsEl= document.getElementById("question");
 var timerEl = document.getElementById("timer");
 var choicesEl = document.getElementById("choices");
 var submitBtn = document.getElementById("submit");
 var startBtn = document.getElementById("start");
 var initialsEl = document.getElementById("initials");
-
-// sound effects
-// var sfxRight = new Audio("assets/sfx/correct.wav");
-// var sfxWrong = new Audio("assets/sfx/incorrect.wav");
 
 function startQuiz() {
   // hide start screen
@@ -34,21 +30,26 @@ function startQuiz() {
 
 function getQuestion() {
   // get current question object from array
-  var currentQuestion = questions[currentQuestion];
+  var currntQuestion = questions[currentQuestion];
 
   // update title with current question
-  var title = document.getElementById("question");
-  title.textContent = questions[currentQuestion].question;
+  var title = document.getElementById("question-title");
+  console.log(currntQuestion);
+  console.log(questions[currntQuestion]);
+  title.textContent = currntQuestion.question;
+  
 
   // clear out any old question choices
-  choicesEl.innerHTML = "";
+  choicesEl.innerHTML = ""
 
   // loop over choices
-  currentQuestion.choices.forEach(function(choice, i) {
+  console.log(currntQuestion.choices);
+  currntQuestion.choices.forEach(function(choice, i) {
     // create new button for each choice
+    console.log(choice, i);
     var choiceNode = document.createElement("button");
     choiceNode.setAttribute("class", "choice");
-    choiceNode.setAttribute("value", choice);
+    choiceNode.setAttribute("value", choices);
 
     choiceNode.textContent = i + 1 + ". " + choice;
 
@@ -56,6 +57,7 @@ function getQuestion() {
     choiceNode.onclick = questionClick;
 
     // display on the page
+    // choicesEl.appendChild(choiceNode);
     choicesEl.appendChild(choiceNode);
   });
 }
