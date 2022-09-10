@@ -58,7 +58,6 @@ function getQuestion() {
     choiceNode.onclick = questionClick;
 
     // display on the page
-    // choicesEl.appendChild(choiceNode);
     choicesEl.appendChild(choiceNode);
   });
 }
