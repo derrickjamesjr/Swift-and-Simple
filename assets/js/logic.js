@@ -10,6 +10,7 @@ var choicesEl = document.getElementById("choices");
 var submitBtn = document.getElementById("submit");
 var startBtn = document.getElementById("start");
 var initialsEl = document.getElementById("initials");
+var feedbackEl = document.getElementById("feedback");
 
 function startQuiz() {
   // hide start screen
@@ -49,7 +50,7 @@ function getQuestion() {
     console.log(choice, i);
     var choiceNode = document.createElement("button");
     choiceNode.setAttribute("class", "choice");
-    choiceNode.setAttribute("value", choices);
+    choiceNode.setAttribute("value", choice);
 
     choiceNode.textContent = i + 1 + ". " + choice;
 
@@ -64,7 +65,9 @@ function getQuestion() {
 
 function questionClick() {
   // check if user guessed wrong
-  if (this.value !== questions[currentQuestionIndex].answer) {
+  var currntQuestion = questions[currentQuestion]
+  console.log(this.value);
+  if (this.value !== currntQuestion.answer) {
     // penalize time
     time -= 15;
 
@@ -75,13 +78,8 @@ function questionClick() {
     // display new time on page
     timerEl.textContent = time;
 
-    // play "wrong" sound effect
-    sfxWrong.play();
-
     feedbackEl.textContent = "Wrong!";
   } else {
-    // play "right" sound effect
-    sfxRight.play();
 
     feedbackEl.textContent = "Correct!";
   }
@@ -93,10 +91,10 @@ function questionClick() {
   }, 1000);
 
   // move to next question
-  currentQuestionIndex++;
+  currentQuestion++;
 
   // check if we've run out of questions
-  if (currentQuestionIndex === questions.length) {
+  if (currentQuestion === questions.length) {
     quizEnd();
   } else {
     getQuestion();
